@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 420px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 15px;
+      color: #34495e;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 20px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #219150;
+    }
+
+    .option-group {
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    .option-group input {
+      width: auto;
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+
+    /* Flying airplane animation */
+    .plane {
+      position: absolute;
+      top: 30%;
+      left: -100px;
+      width: 100px;
+      animation: fly 15s linear infinite;
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translateX(0) rotate(0deg);
+      }
+      100% {
+        transform: translateX(120vw) rotate(5deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Plane icon flying across the screen -->
+  <img src="https://cdn-icons-png.flaticon.com/512/159/159604.png" class="plane" alt="Flying plane" />
+
+  <div class="box">
+    <h2>Complete Your Payment</h2>
+
+    <form id="paymentForm">
+      <label>Select Payment Method:</label>
+      <div class="option-group">
+        <label><input type="radio" name="method" required> Credit / Debit Card</label>
+        <label><input type="radio" name="method"> UPI</label>
+        <label><input type="radio" name="method"> Net Banking</label>
+      </div>
+
+      <label>Card / UPI Number:</label>
+      <input type="text" placeholder="Enter your card or UPI ID" required>
+
+      <label>Name on Card:</label>
+      <input type="text" placeholder="Your full name" required>
+
+      <label>Amount:</label>
+      <input type="number" value="100000" readonly>
+
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("paymentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("✅ Payment Successful!\n\nThank you for booking your tour with us.");
+      window.location.href = "index.html"; // or your thank you/home page
+    });
+  </script>
+
+</body>
+</html>

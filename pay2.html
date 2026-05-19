@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 420px;
+      text-align: center;
+      position: relative;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 15px;
+      color: #34495e;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 20px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #219150;
+    }
+
+    .option-group {
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    .option-group input {
+      width: auto;
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+
+    .payment-form {
+      display: none;
+    }
+
+    .plane {
+      position: absolute;
+      top: 30%;
+      left: -100px;
+      width: 100px;
+      animation: fly 15s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fly {
+      0% { transform: translateX(0) rotate(0deg); }
+      100% { transform: translateX(120vw) rotate(5deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://cdn-icons-png.flaticon.com/512/159/159604.png" class="plane" alt="Flying plane" />
+
+  <div class="box">
+    <h2>Complete Your Payment</h2>
+
+    <form id="paymentForm">
+      <label>Select Payment Method:</label>
+      <div class="option-group">
+        <label><input type="radio" name="method" value="card" required onchange="showForm()"> Credit / Debit Card</label>
+        <label><input type="radio" name="method" value="upi" onchange="showForm()"> UPI</label>
+        <label><input type="radio" name="method" value="netbanking" onchange="showForm()"> Net Banking</label>
+      </div>
+
+      <div class="payment-form" id="cardForm">
+        <label>Card Number:</label>
+        <input type="text" placeholder="Enter your card number">
+
+        <label>Name on Card:</label>
+        <input type="text" placeholder="Your full name">
+
+        <label>Expiry Date:</label>
+        <input type="text" placeholder="MM/YY">
+
+        <label>CVV:</label>
+        <input type="password" placeholder="CVV">
+      </div>
+
+      <div class="payment-form" id="upiForm">
+        <label>UPI ID:</label>
+        <input type="text" placeholder="yourname@upi">
+      </div>
+
+      <div class="payment-form" id="netbankingForm">
+        <label>Bank Name:</label>
+        <input type="text" placeholder="Enter your bank name">
+
+        <label>Account Number:</label>
+        <input type="text" placeholder="Enter account number">
+
+        <label>IFSC Code:</label>
+        <input type="text" placeholder="Enter IFSC code">
+      </div>
+
+      <label>Total Amount:</label>
+      <input type="number" id="totalAmount" readonly>
+
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
+
+  <script>
+    function showForm() {
+      const method = document.querySelector('input[name="method"]:checked').value;
+      const forms = {
+        card: document.getElementById("cardForm"),
+        upi: document.getElementById("upiForm"),
+        netbanking: document.getElementById("netbankingForm")
+      };
+
+      for (const key in forms) {
+        const form = forms[key];
+        form.style.display = "none";
+        Array.from(form.querySelectorAll("input")).forEach(input => input.required = false);
+      }
+
+      const selectedForm = forms[method];
+      selectedForm.style.display = "block";
+      Array.from(selectedForm.querySelectorAll("input")).forEach(input => input.required = true);
+    }
+
+    // Set dynamic total amount
+    const pricePerPassenger = 50000;
+    const count = parseInt(localStorage.getItem("passengerCount")) || 1;
+    document.getElementById("totalAmount").value = count * pricePerPassenger;
+
+    document.getElementById("paymentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("✅ Payment Successful!\n\nThank you for booking your tour with us.");
+      window.location.href = "thankyou.html";
+    });
+  </script>
+
+</body>
+</html>

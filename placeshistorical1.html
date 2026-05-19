@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Historical Places - Maharashtra</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('travel.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.94);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 420px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .checkbox-group {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #34495e;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #8e44ad;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #732d91;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Historical Places in Maharashtra (Select up to 7)</h2>
+    <form id="placesForm" class="checkbox-group">
+      <!-- Historical places injected by JS -->
+    </form>
+    <button type="button" onclick="goToNextPage()">Submit</button>
+  </div>
+
+  <script>
+    const historicalPlaces = [
+      "Ajanta Caves",
+      "Ellora Caves",
+      "Raigad Fort",
+      "Sinhagad Fort",
+      "Shivneri Fort",
+      "Daulatabad Fort",
+      "Gateway of India",
+      "Bibi Ka Maqbara",
+      "Pratapgad Fort",
+      "Rajgad Fort"
+    ];
+
+    const form = document.getElementById("placesForm");
+
+    historicalPlaces.forEach(place => {
+      const label = document.createElement("label");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.name = "places";
+      checkbox.value = place;
+
+      checkbox.addEventListener('change', () => {
+        const selected = document.querySelectorAll('input[name="places"]:checked');
+        if (selected.length > 7) {
+          checkbox.checked = false;
+          alert("You can only select up to 7 places.");
+        }
+      });
+
+      label.appendChild(checkbox);
+      label.append(` ${place}`);
+      form.appendChild(label);
+    });
+
+    function goToNextPage() {
+      const checkboxes = document.querySelectorAll('input[name="places"]:checked');
+      const selected = Array.from(checkboxes).map(cb => cb.value);
+
+      if (selected.length === 0) {
+        alert("Please select at least one place.");
+        return;
+      }
+
+      const selectedQuery = encodeURIComponent(selected.join(','));
+      window.location.href = `summary1.html?places=${selectedQuery}`;
+    }
+  </script>
+
+</body>
+</html>
+
+

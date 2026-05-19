@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Waterfalls</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('kerala_waterfall.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .checkbox-group {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #34495e;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #357ac8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Select Waterfalls to Visit in Kerala (You can only select 5)</h2>
+    <form id="placesForm" class="checkbox-group">
+      <!-- Waterfalls inserted by JS -->
+    </form>
+    <button type="button" onclick="goToNextPage()">Submit</button>
+  </div>
+
+  <script>
+    const waterfalls = [
+      "Athirappilly Waterfalls",
+      "Vazhachal Waterfalls",
+      "Meenmutty Waterfalls (Wayanad)",
+      "Soochipara Waterfalls",
+      "Thommankuthu Waterfalls",
+      "Palaruvi Waterfalls",
+      "Cheeyappara Waterfalls",
+      "Perunthenaruvi Waterfalls"
+    ];
+  
+    const form = document.getElementById("placesForm");
+  
+    waterfalls.forEach(place => {
+      const label = document.createElement("label");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.name = "places";
+      checkbox.value = place;
+  
+      checkbox.addEventListener('change', () => {
+        const selected = document.querySelectorAll('input[name="places"]:checked');
+        if (selected.length > 5) {
+          checkbox.checked = false;
+          alert("You can only select up to 5 waterfalls.");
+        }
+      });
+  
+      label.appendChild(checkbox);
+      label.append(` ${place}`);
+      form.appendChild(label);
+    });
+  
+    function goToNextPage() {
+      const checkboxes = document.querySelectorAll('input[name="places"]:checked');
+      const selected = Array.from(checkboxes).map(cb => cb.value);
+  
+      if (selected.length === 0) {
+        alert("Please select at least one waterfall.");
+        return;
+      }
+  
+      const selectedQuery = encodeURIComponent(selected.join(','));
+      window.location.href = `summary1.html?places=${selectedQuery}`;
+    }
+  </script>
+  
+</body>
+</html>

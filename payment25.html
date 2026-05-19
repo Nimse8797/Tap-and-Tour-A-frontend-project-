@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Page - Wanderlust Travels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f8fb;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e'); /* Example beach image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .package-info {
+      background: #eaf6ff;
+      padding: 15px;
+      border-left: 5px solid #3498db;
+      margin-bottom: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Payment for Travel Package</h2>
+
+    <div class="package-info" id="selected-package">
+      Package: <span id="packageName"> Golden Package</span>
+    </div>
+
+    <form>
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" required placeholder="John Doe">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="john@example.com">
+
+      <label for="cardnumber">Card Number</label>
+      <input type="text" id="cardnumber" required placeholder="1234 5678 9012 3456" maxlength="19">
+
+      <label for="expiry">Expiry Date (MM/YY)</label>
+      <input type="text" id="expiry" required placeholder="12/25" maxlength="5">
+
+      <label for="cvv">CVV</label>
+      <input type="text" id="cvv" required placeholder="123" maxlength="4">
+
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    © 2025 Tap and Tour. All rights reserved.
+  </div>
+
+  <script>
+    // Example of passing package via URL like ?package=Goa+Adventure
+    const params = new URLSearchParams(window.location.search);
+    const packageName = params.get("package");
+
+    if (packageName) {
+      document.getElementById("packageName").innerText = decodeURIComponent(packageName.replace(/\+/g, ' '));
+    }
+  </script>
+</body>
+</html>

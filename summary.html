@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summary of Selection</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 420px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    ul {
+      text-align: left;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      color: #34495e;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    button {
+      margin: 10px 8px;
+      padding: 10px 20px;
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #357ac8;
+    }
+
+    .no-selection {
+      color: #c0392b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Your Selected Places</h2>
+    <div id="placeList">
+      <!-- Places will be loaded here -->
+    </div>
+    <div>
+      <button onclick="goBack()">Go Back</button>
+      <button onclick="confirmBooking()">Confirm Booking</button>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const places = urlParams.get('places');
+    const placeListDiv = document.getElementById('placeList');
+
+    if (places) {
+      const placesArray = places.split(',');
+      const ul = document.createElement('ul');
+      placesArray.forEach(place => {
+        const li = document.createElement('li');
+        li.textContent = place;
+        ul.appendChild(li);
+      });
+      placeListDiv.appendChild(ul);
+    } else {
+      placeListDiv.innerHTML = '<p class="no-selection">No places selected.</p>';
+    }
+
+    function goBack() {
+      window.history.back(); // goes back to places.html
+    }
+
+    function confirmBooking() {
+  window.location.href = "payment.html";
+}
+    
+  </script>
+
+</body>
+</html>

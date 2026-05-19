@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tap and Tour | Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #f3aa0c;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      padding: 15px 25px;
+      text-decoration: none;
+      color: #efb30f;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #e6f0ff;
+    }
+
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 50px 40px;
+      background-color: #fff;
+    }
+
+    .feature {
+      background-color: #f0f8ff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .feature h3 {
+      color: #ecc30d;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #ebcd0b;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tap and Tour</h1>
+    <p>Your Gateway to Hassle-Free Travel</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Discover New Destinations</h1>
+    <p>Plan, book, and explore unforgettable tours around the globe with just a few taps.</p>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Easy Booking</h3>
+      <p>Choose from a wide variety of tour packages with a simple and user-friendly booking experience.</p>
+    </div>
+    <div class="feature">
+      <h3>24/7 Support</h3>
+      <p>Our team is here to help you anytime, anywhere — before, during, or after your trip.</p>
+    </div>
+    <div class="feature">
+      <h3>Trusted Partners</h3>
+      <p>We work with certified guides and travel agencies to ensure a safe and reliable journey.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tap and Tour. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

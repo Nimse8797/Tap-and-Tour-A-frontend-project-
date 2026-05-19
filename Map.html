@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India Map Explorer | Discover Incredible India</title>
+  <style>
+    /* ... Your existing CSS ... (same as before) */
+
+    .maharashtra{
+      position: absolute;
+      width: 4.4%;
+      height: 5.8%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      border-radius: 50%;
+      background: rgba(168, 220, 237, 0.2);
+      border: 2px dashed rgba(152, 208, 219, 0.5);
+    }
+
+    .goa {
+      position: absolute;
+      width: 0.5%;
+      height: 1.5%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      border-radius: 50%;
+      background: rgba(141, 223, 226, 0.2);
+      border: 2px dashed rgba(154, 209, 225, 0.5);
+    }
+.kerala {
+      position: absolute;
+      width: 0.7%;
+      height: 5%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      border-radius: 50%;
+      background: rgba(161, 229, 236, 0.2);
+      border: 2px dashed rgba(141, 214, 226, 0.5);
+    }
+
+    .maharashtra:hover,
+    .goa:hover {
+      background: rgba(157, 211, 224, 0.3);
+      border: 2px solid rgba(119, 183, 209, 0.8);
+      transform: scale(1.1);
+    }
+
+    .maharashtra {
+      top: 51.5%;
+      left: 42.5%;
+    }
+
+    .goa {
+      top: 62.8%; 
+      left: 42.8%;
+    }
+.kerala {
+      top: 68.9%;
+      left:44.4%;
+    }
+
+    .tooltip {
+      position: absolute;
+      background: linear-gradient(135deg, #a3d4e3, #ace6e3);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 100;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: powderblue;">
+
+
+  <div class="container" style="text-align: center;">
+    <h1 style="font-size: 25px; font-family: 'Roboto', sans-serif;">Discover Incredible India</h1>
+    <p class="tagline" style="font-size: 18px; font-family:'Roboto', sans-serif;">Explore the diverse cultures, landscapes, and heritage of our beautiful country</p>
+    
+    <h2 class="section-heading" style="font-size: 25px; font-family:'Roboto', sans-serif;">TAP AND TOUR</h2>
+    <p class="map-description" style="font-size: 18px; font-family:'Roboto', sans-serif;">Start your journey by exploring the highlighted states on the map below.</p>
+    
+    <div class="map-container">
+      <center><img src="map.jpg" alt="India Map" height="700px" width="600px" class="india-map"></center>
+      
+      <!-- Maharashtra -->
+      <a href="3rdMH.html" class="maharashtra" title="Maharashtra">
+        <div class="tooltip">Explore Maharashtra →</div>
+      </a>
+
+      <!-- Goa -->
+      <a href="3rdGoa.html" class="goa" title="Goa">
+        <div class="tooltip">Explore Goa →</div>
+      </a>
+    </div>
+  </div>
+<!-- Kerala -->
+   <a href="kerela.html" class="kerala" title="Kerala">
+        <div class="tooltip">Explore Kerala →</div>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const tooltips = document.querySelectorAll('.tooltip');
+    const hotspots = document.querySelectorAll('.maharashtra, .goa');
+
+    hotspots.forEach((hotspot, index) => {
+      const tooltip = tooltips[index];
+      
+      hotspot.addEventListener('mouseenter', (e) => {
+        tooltip.style.opacity = '1';
+        tooltip.style.top = `${e.clientY - 70}px`;
+        tooltip.style.left = `${e.clientX - 100}px`;
+      });
+
+      hotspot.addEventListener('mouseleave', () => {
+        tooltip.style.opacity = '0';
+      });
+
+      hotspot.addEventListener('mousemove', (e) => {
+        tooltip.style.top = `${e.clientY - 70}px`;
+        tooltip.style.left = `${e.clientX - 100}px`;
+      });
+
+      hotspot.style.animation = 'pulse 3s infinite';
+    });
+  </script>
+</body>
+</html>

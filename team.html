@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Team | Tap and Tour</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #f2a92c;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      padding: 15px 25px;
+      text-decoration: none;
+      color: #f5b427;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #e6f0ff;
+    }
+
+    .team-section {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .team-section h2 {
+      font-size: 2.5rem;
+      color: #f8bb21;
+      margin-bottom: 40px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-member {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-member img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .team-member h4 {
+      margin-bottom: 5px;
+      color: #f3be0f;
+    }
+
+    .team-member p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: #f6b913;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tap and Tour</h1>
+    <p style="color: rgb(16, 16, 14); font-weight: bold; font-family: 'Segoe UI', 'Georgia', serif;font-size: 25px;">Your Gateway to Hassle-Free Travel</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="faq.html">FAQ</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+
+      <div class="team-member">
+        <img src="Vaishnavi.jpg" alt="Team Member 1">
+        <h4>VAISHNAVI NIMSE</h4>
+       
+      </div>
+
+      <div class="team-member">
+        <img src="deesha2.jpg" alt="Team Member 2">
+        <h4>DEESHA KALANTRI</h4>
+        
+      </div>
+
+      <div class="team-member">
+        <img src="saleha1.jpg" alt="Team Member 3">
+        <h4>SALEHA SHAIKH</h4>
+       
+      </div>
+
+      
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tap and Tour. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
